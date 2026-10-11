@@ -67,7 +67,7 @@
     "proxyConfig": "proxy.conf.json"
   }
 }
-        "test": {
+        ,"test": {
           "builder": "@angular/build:karma",
           "options": {
             "polyfills": [
@@ -88,5 +88,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
