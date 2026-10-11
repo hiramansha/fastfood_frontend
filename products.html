@@ -1,0 +1,249 @@
+<section class="products-section">
+
+  <div class="container">
+
+    <!-- ================= HEADER ================= -->
+
+    <div class="section-header">
+
+      <div>
+
+        <span class="section-label">
+          OUR MENU
+        </span>
+
+        <h1>
+          Popular Food
+        </h1>
+
+        <p>
+          Choose your favorite meal and order now.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    @if (categoriesLoading) {
+
+      <div class="category-loading">
+        Loading categories...
+      </div>
+
+    }
+
+    @if (categoryErrorMessage) {
+
+      <div class="error">
+        {{ categoryErrorMessage }}
+      </div>
+
+    }
+
+
+    @if (!categoriesLoading && categories.length > 0) {
+
+      <div class="category-list">
+
+        <!-- ALL -->
+
+        <button
+          type="button"
+          class="category"
+          [class.active]="selectedCategoryId === null"
+          (click)="selectCategory(null)"
+        >
+          All
+        </button>
+
+
+        <!-- CATEGORIES -->
+
+        @for (category of categories; track category.categoryId) {
+
+          <button
+            type="button"
+            class="category"
+            [class.active]="selectedCategoryId === category.categoryId"
+            (click)="selectCategory(category.categoryId)"
+          >
+            {{ category.name }}
+          </button>
+
+        }
+
+      </div>
+
+    }
+
+
+    <!-- ================= PRODUCTS LOADING ================= -->
+
+    @if (loading) {
+
+      <div class="loading">
+        Loading products...
+      </div>
+
+    }
+
+
+    <!-- ================= ERROR ================= -->
+
+    @if (errorMessage) {
+
+      <div class="error">
+        {{ errorMessage }}
+      </div>
+
+    }
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    @if (!loading && !errorMessage) {
+
+      @if (products.length === 0) {
+
+        <div class="empty">
+          No products found.
+        </div>
+
+      }
+
+
+      @if (products.length > 0) {
+
+        <div class="products-grid">
+
+          @for (
+            product of products;
+            track product.productId
+          ) {
+
+            <article class="product-card">
+
+
+              <!-- PRODUCT IMAGE -->
+
+              <div class="product-image">
+
+                @if (product.imageUrl) {
+
+                  <img
+                    [src]="product.imageUrl"
+                    [alt]="product.name"
+                    class="product-img"
+                  />
+
+                }
+
+                @else {
+
+                  <div class="no-image">
+                    🍔
+                  </div>
+
+                }
+
+              </div>
+
+
+              <!-- PRODUCT INFO -->
+
+              <div class="product-info">
+
+
+                <!-- CATEGORY -->
+
+                @if (product.categoryName) {
+
+                  <span class="product-category">
+                    {{ product.categoryName }}
+                  </span>
+
+                }
+
+
+                <!-- NAME -->
+
+                <h3>
+                  {{ product.name }}
+                </h3>
+
+
+                <!-- DESCRIPTION -->
+
+                @if (product.description) {
+
+                  <p>
+                    {{ product.description }}
+                  </p>
+
+                }
+
+
+                <!-- BOTTOM -->
+
+                <div class="product-bottom">
+
+
+                  <!-- PRICE -->
+
+                  <div>
+
+                    @if (
+                      product.discountPrice !== null &&
+                      product.discountPrice < product.price
+                    ) {
+
+                      <del>
+                        Rs. {{ product.price }}
+                      </del>
+
+                      <strong>
+                        Rs. {{ product.discountPrice }}
+                      </strong>
+
+                    }
+
+                    @else {
+
+                      <strong>
+                        Rs. {{ product.price }}
+                      </strong>
+
+                    }
+
+                  </div>
+
+
+                  <!-- ADD BUTTON -->
+
+                  <button
+                    type="button"
+                    class="add-btn"
+                  >
+                    + Add
+                  </button>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          }
+
+        </div>
+
+      }
+
+    }
+
+  </div>
+
+</section>

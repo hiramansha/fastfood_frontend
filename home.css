@@ -1,0 +1,120 @@
+.hero {
+  background: linear-gradient(135deg, #fff5f5, #ffffff);
+  min-height: calc(100vh - 72px);
+  display: flex;
+  align-items: center;
+}
+
+.hero-container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+  padding: 70px 0;
+}
+
+.badge {
+  display: inline-block;
+  background: #ffe5e5;
+  color: #d62828;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(45px, 6vw, 78px);
+  line-height: 1;
+  font-weight: 900;
+  color: #222222;
+}
+
+.hero h1 span {
+  display: block;
+  color: #d62828;
+}
+
+.hero p {
+  max-width: 560px;
+  margin: 25px 0;
+  color: #666666;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.primary-btn {
+  background: #d62828;
+  color: white;
+}
+
+.primary-btn:hover {
+  background: #b71f1f;
+}
+
+.secondary-btn {
+  border: 2px solid #d62828;
+  color: #d62828;
+}
+
+.secondary-btn:hover {
+  background: #d62828;
+  color: white;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-circle {
+  width: min(420px, 80vw);
+  height: min(420px, 80vw);
+  border-radius: 50%;
+  background: #d62828;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 180px;
+  box-shadow: 0 25px 60px rgba(214, 40, 40, 0.25);
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .food-circle {
+    font-size: 120px;
+  }
+}
